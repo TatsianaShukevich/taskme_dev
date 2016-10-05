@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Controller;
+namespace App\Controller;
 
-use app\Model\MainModel;
+use App\Model\MainModel;
 
 class MainController {
 

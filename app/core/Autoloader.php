@@ -1,6 +1,6 @@
 <?php
 
-namespace app\core;
+namespace App\Core;
 
 /**
  * Loads classes.
@@ -46,7 +46,7 @@ class Autoloader {
      */
     public function load_class_src($className)
     {
-        $prefix = 'app\\';
+        $prefix = 'App\\';
         $base_dir =  'app' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR;
         $len = strlen($prefix);
 

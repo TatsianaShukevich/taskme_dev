@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Controller;
+namespace App\Controller;
 
-use app\Model\TaskModel;
+use App\Model\TaskModel;
 
 class TaskController {
 

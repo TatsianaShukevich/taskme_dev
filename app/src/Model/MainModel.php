@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Model;
+namespace App\Model;
 
-use app\View\MainView;
+use App\View\MainView;
 
 class MainModel {
 

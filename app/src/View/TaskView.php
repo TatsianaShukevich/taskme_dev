@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Tatsiana_Shukevich
- * Date: 10/4/2016
- * Time: 4:45 PM
- */
 
-namespace app\View;
+namespace App\View;
 
 
 class TaskView {

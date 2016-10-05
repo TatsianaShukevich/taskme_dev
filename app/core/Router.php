@@ -1,6 +1,6 @@
 <?php
 
-namespace app\core;
+namespace App\Core;
 
 class Router
 {
@@ -12,7 +12,7 @@ class Router
     {
         $controller_name = 'Main';
         $action_name = 'main';
-        $namespace = '\\app\\Controller\\';
+        $namespace = '\\App\\Controller\\';
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
 

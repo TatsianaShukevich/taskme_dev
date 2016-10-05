@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Model;
+namespace App\Model;
 
-use app\View\TaskView;
+use App\View\TaskView;
 
 class TaskModel {
 
