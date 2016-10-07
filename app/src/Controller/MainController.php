@@ -3,12 +3,15 @@
 namespace App\Controller;
 
 use App\Model\MainModel;
+use App\View\MainView;
 
 class MainController {
 
     public function main_action() {
-        //include 'C:\OpenServer\domains\taskme\src\Model\MainModel.php';
         $model = new MainModel();
-        $model->get_data();
+        $data = $model->get_data();
+
+        $view = new MainView();
+        $view->generate($data);
     }
 }

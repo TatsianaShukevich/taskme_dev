@@ -30,11 +30,10 @@ class Router
         $action_name = $action_name . '_action';
 
         $controller = new $controller_name;
-        $action = $action_name;
 
-        if(method_exists($controller, $action))
+        if(method_exists($controller, $action_name))
         {
-            $controller->$action();
+            $controller->$action_name();
         }
         else
         {
