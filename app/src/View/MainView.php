@@ -9,9 +9,9 @@ class MainView {
         foreach ($data as $key => $value) {
             $task .= 'name: ' . $value['name'] . ' and description: ' . $value['desc'] . '</br>';
         }
-        $path = '../../../app/templates/main_template.html';
+        $path = '../../../../app/templates/main_template.html';
         //не инклюдит по пути $path(
 
-        include 'C:\OpenServer\domains\taskme\app\templates\main_template.html';
+        include $path;
     }
 };

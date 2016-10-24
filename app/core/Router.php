@@ -40,4 +40,8 @@ class Router
             // exception
         }
     }
+
+    public function getPath() {
+
+    }
 }
