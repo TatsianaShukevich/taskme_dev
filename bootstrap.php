@@ -18,6 +18,6 @@ $error_catcher->registerExeptionHandler();
 
 $configs = new Config();
 $configs->parseIni();
-$pass = $configs->getConfig('database');
+
 
 Router::go();

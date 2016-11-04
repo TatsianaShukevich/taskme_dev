@@ -7,10 +7,10 @@ class MainView {
     public function generate($data = null) {
         $task = '';
         foreach ($data as $key => $value) {
-            $task .= 'name: ' . $value['name'] . ' and description: ' . $value['desc'] . '</br>';
+            $task .= '<tr> <td>' . $value['name'] . '</td><td>' . $value['desc'] . '</td>';
+            //$task .= 'name: ' . $value['name'] . ' and description: ' . $value['desc'] . '</br>';
         }
-        $path = '../../../../app/templates/main_template.html';
-        //не инклюдит по пути $path(
+        $path = __DIR__ . '../../../../app/templates/main_template.html';
 
         include $path;
     }

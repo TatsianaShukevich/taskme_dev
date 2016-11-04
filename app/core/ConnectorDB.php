@@ -9,17 +9,17 @@ class ConnectorDB {
     private $stmt;
     private $args = array();
     private $sql;
+    private $tables = [
+        'Task',
+        //TODO
+    ];
 
     public function __construct($dsn, $user="", $passwd="", $opt = array()) {
         $this->pdo = new \PDO($dsn, $user, $passwd, $opt);
     }
 
     public function select($rows, $table) {
-        $tables = [
-            'Task',
-            //TODO
-        ];
-        if (!in_array($table, $tables)) {
+        if (!in_array($table, $this->tables)) {
             //exception;
         }
         $this->sql = "SELECT $rows FROM $table";
@@ -62,8 +62,31 @@ class ConnectorDB {
     public function close() {
     }
 
-    public function insert() {
+    public function insert($table, $data) {
 
+        if (!in_array($table, $this->tables)) {
+            //exception;
+        }
+        switch($table) {
+            case 'Task':
+                $this->args = [
+                    'name' => $data["name"],
+                    'desc' => $data['desc'],
+                    'date_created' => $data['date_created'],
+                    'date_deadline' => $data['date_deadline'],
+                    'assignee' => $data['assignee']
+                ];
+                if (isset($data) && !empty($data)) {
+                    $this->sql = "INSERT INTO $table (`name`, `desc`, `date_created`, `date_deadline`, `assignee` )
+                                  VALUES (:name, :desc, :date_created, :date_deadline, :assignee );";
+                }
+                else {
+                    //exception;
+                }
+
+                break;
+        }
+        return $this;
     }
 
     public function join() {

@@ -7,8 +7,12 @@ use App\View\TaskView;
 
 class TaskController {
 
-    public function add_action() {
+    public function create_action() {
+        $model = new TaskModel();
+        $model->create_task($_POST);
+    }
 
+    public function add_action() {
         $model = new TaskModel();
         $model->add_task();
 
