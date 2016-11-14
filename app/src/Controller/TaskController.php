@@ -9,22 +9,25 @@ use App\Core\ServiceLocator;
 class TaskController {
 
     private $serviceLocator;
+    private $model;
 
     public function __construct(ServiceLocator $serviceLocator) {
         $this->serviceLocator = $serviceLocator;
+
+        $this->model =  new TaskModel($this->serviceLocator->get('\App\Service\QueryBilderService'));
     }
 
     public function create_action() {
 
-        $DbConnectorService = $this->serviceLocator->get("DbConnectorService");
+        //$queryBilderService = $this->serviceLocator->get("QueryBilderService");
 
-        $model = new TaskModel($DbConnectorService);
-        $model->create_task($_POST);
+        //$model = new TaskModel($queryBilderService);
+        $this->model->create_task($_POST);
     }
 
     public function add_action() {
-        $model = new TaskModel();
-        $model->add_task();
+        //$model = new TaskModel($queryBilderService);
+        $this->model->add_task();
 
         $view = new TaskView();
         $view->generate_add_task();

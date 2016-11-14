@@ -4,6 +4,7 @@ use \App\Core\Autoloader;
 use \App\Core\ErrorCatcher;
 use \App\Core\Config;
 use App\Core\ServiceLocator;
+use \App\Core\DbConnector;
 
 include_once 'app/core/Autoloader.php';
 //include_once 'app/core/ErrorCatcher.php';
@@ -20,8 +21,10 @@ $error_catcher->registerExeptionHandler();
 $configs = new Config();
 $configs->parseIni();
 
+
+$dbConnector = new DbConnector();
 $serviceLocator = new ServiceLocator();
-$serviceLocator->addClass('DbConnectorService', array("mysql:host=localhost;dbname=taskme", "root"));
+$serviceLocator->addClass('\App\Service\QueryBilderService', array($dbConnector->getPDO("mysql:host=localhost;dbname=taskme", "root")));
 
 
 
