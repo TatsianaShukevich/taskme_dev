@@ -14,8 +14,12 @@ class ConnectorDB {
         //TODO
     ];
 
-    public function __construct($dsn, $user="", $passwd="", $opt = array()) {
-        $this->pdo = new \PDO($dsn, $user, $passwd, $opt);
+//    public function __construct($dsn, $user="", $passwd="", $opt = array()) {
+//        $this->pdo = new \PDO($dsn, $user, $passwd, $opt);
+//    }
+
+    public function __construct($pdo) {
+        $this->pdo = $pdo;
     }
 
     public function select($rows, $table) {

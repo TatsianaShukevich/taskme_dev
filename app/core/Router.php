@@ -2,13 +2,23 @@
 
 namespace App\Core;
 
+use App\Core\ServiceLocator;
+
+
 class Router
 {
+
+//    static private $serviceLocator;
+//
+//    public function __construct(ServiceLocator $serviceLocator) {
+//        self::$serviceLocator = $serviceLocator;
+//    }
+
     /**
      * Parses URL...
      *
      */
-    static function go()
+    static function go(ServiceLocator $serviceLocator)
     {
         $controller_name = 'Main';
         $action_name = 'main';
@@ -29,7 +39,7 @@ class Router
         $controller_name = $namespace . $controller_name . 'Controller';
         $action_name = $action_name . '_action';
 
-        $controller = new $controller_name;
+        $controller = new $controller_name($serviceLocator);
 
         if(method_exists($controller, $action_name))
         {
