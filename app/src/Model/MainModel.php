@@ -4,18 +4,17 @@ namespace App\Model;
 
 
 use App\Core\ConnectorDB;
+use \App\Service\QueryBilderService;
 
 class MainModel {
 
     private $db;
 
-    public function __construct($db) {
-        $this->db = $db;
+    public function __construct(QueryBilderService $queryBilderService) {
+        $this->db = $queryBilderService;
     }
 
     public function get_data() {
-//        $dsn = "mysql:host=localhost;dbname=taskme";
-//        $db =  new ConnectorDB($dsn, 'root');
         $data =$this->db->select('*', 'Task')->run()->as_array();
 
         //Запрос с where пример

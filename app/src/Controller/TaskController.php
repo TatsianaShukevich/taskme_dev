@@ -10,26 +10,21 @@ class TaskController {
 
     private $serviceLocator;
     private $model;
+    private $view;
 
-    public function __construct(ServiceLocator $serviceLocator) {
+    public function __construct(ServiceLocator $serviceLocator, TaskModel $taskModel, TaskView $taskView) {
         $this->serviceLocator = $serviceLocator;
-
-        $this->model =  new TaskModel($this->serviceLocator->get('\App\Service\QueryBilderService'));
+        $this->model =  $taskModel;
+        $this->view =  $taskView;
     }
 
     public function create_action() {
-
-        //$queryBilderService = $this->serviceLocator->get("QueryBilderService");
-
-        //$model = new TaskModel($queryBilderService);
         $this->model->create_task($_POST);
     }
 
     public function add_action() {
-        //$model = new TaskModel($queryBilderService);
-        $this->model->add_task();
 
-        $view = new TaskView();
-        $view->generate_add_task();
+        $this->model->add_task();
+        $this->view->generate_add_task();
     }
 }

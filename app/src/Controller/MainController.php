@@ -10,18 +10,16 @@ class MainController {
 
     private $serviceLocator;
     private $model;
+    private $view;
 
-    public function __construct(ServiceLocator $serviceLocator) {
+    public function __construct(ServiceLocator $serviceLocator, MainModel $mainModel, MainView $mainView) {
         $this->serviceLocator = $serviceLocator;
-
-        $this->model =  new MainModel($this->serviceLocator->get('\App\Service\QueryBilderService'));
+        $this->model =  $mainModel;
+        $this->view =  $mainView;
     }
 
     public function main_action() {
-        //$model = new MainModel();
         $data = $this->model->get_data();
-
-        $view = new MainView();
-        $view->generate($data);
+        $this->view->generate($data);
     }
 }

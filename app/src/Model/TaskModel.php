@@ -4,13 +4,14 @@ namespace App\Model;
 
 use App\Core\ConnectorDB;
 use App\Core\ServiceLocator;
+use \App\Service\QueryBilderService;
 
 class TaskModel {
 
     private $db;
 
-    public function __construct($db) {
-        $this->db = $db;
+    public function __construct(QueryBilderService $queryBilderService) {
+        $this->db = $queryBilderService;
     }
 
     public function add_task() {
@@ -18,8 +19,6 @@ class TaskModel {
     }
 
     public function create_task($post) {
-//        $dsn = "mysql:host=localhost;dbname=taskme";
-//        $db =  new ConnectorDB($dsn, 'root');
         $data = array(
             'name' => $post['caption'],
             'desc' => $post['description'],

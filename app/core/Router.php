@@ -8,11 +8,6 @@ use App\Core\ServiceLocator;
 class Router
 {
 
-//    static private $serviceLocator;
-//
-//    public function __construct(ServiceLocator $serviceLocator) {
-//        self::$serviceLocator = $serviceLocator;
-//    }
 //comment
     /**
      * Parses URL...
@@ -28,7 +23,7 @@ class Router
 
         if ( !empty($routes[1]) )
         {
-            $controller_name = $routes[1];
+            $controller_name = ucfirst($routes[1]);
         }
 
         if ( !empty($routes[2]) )
@@ -38,8 +33,7 @@ class Router
 
         $controller_name = $namespace . $controller_name . 'Controller';
         $action_name = $action_name . '_action';
-
-        $controller = new $controller_name($serviceLocator);
+        $controller = $serviceLocator->get($controller_name);
 
         if(method_exists($controller, $action_name))
         {
